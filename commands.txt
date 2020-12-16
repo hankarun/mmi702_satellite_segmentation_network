@@ -1,0 +1,16 @@
+ sentinelsat -u hankarun -p Forum9876 --sentinel 2 --cloud 0 -g ankara.geojson -s 20200101 --name "S2A*"
+ sentinelsat -uuid "51facf79-9baa-4078-97bf-ebb9ae3b9800" -u hankarun -p Forum9876
+ 
+ Convert to tif
+ gdal_translate T36TVK_20200829T083611_B08_10m.jp2 result.tif
+ warp to 4326
+ gdalwarp -t_srs EPSG:4326 result.tif result_4326.tif
+ 
+ Rasterize buildings for groundTruth
+ 
+ Cut to 100x100 pices for every channel
+ 
+ Test with unet 4 x 100 x 100
+ 
+ Add another timed value
+ Test with 8 x 100 x 100
